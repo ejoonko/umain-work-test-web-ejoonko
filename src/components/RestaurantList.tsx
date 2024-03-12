@@ -7,8 +7,11 @@ interface RestaurantListProps {
 
 export function RestaurantList({ restaurants }: RestaurantListProps) {
     return (
-        <div className="flex flex-wrap gap-4">
-            {restaurants.map((restaurant) => <RestaurantCard key={restaurant.id} {...restaurant} />)}
-        </div>
+        <>
+            <h1 className="text-display pb-10">{"Restaurant’s"}</h1>
+            <div className="flex flex-wrap gap-4">
+                {restaurants.map((restaurant) => <RestaurantCard key={restaurant.id} {...restaurant} />)}
+            </div>
+        </>
     )
 }

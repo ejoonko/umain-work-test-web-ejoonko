@@ -1,5 +1,5 @@
 import { RestaurantList } from "@/components/RestaurantList";
-import { MunchiesButton } from "@/components/general/MunchiesButton";
+import { FullRoundedButton } from "@/components/general/FullRoundedButton";
 import { RestaurantCard } from "@/components/general/RestaurantCard";
 import { getRestaurants } from "@/modules/apiClients";
 
