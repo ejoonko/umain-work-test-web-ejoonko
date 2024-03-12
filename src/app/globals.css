@@ -33,3 +33,9 @@
     @apply text-xs;
   }
 }
+
+@layer utilities {
+  body {
+    @apply bg-umain-off-white;
+  }
+}
