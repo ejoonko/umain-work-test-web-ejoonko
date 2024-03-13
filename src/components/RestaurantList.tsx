@@ -1,8 +1,8 @@
-import { Restaurant } from "@/modules/types"
+import { FullRestaurant } from "@/modules/types"
 import { RestaurantCard } from "./general/RestaurantCard";
 
 interface RestaurantListProps {
-    restaurants: Restaurant[];
+    restaurants: FullRestaurant[];
 }
 
 export function RestaurantList({ restaurants }: RestaurantListProps) {
