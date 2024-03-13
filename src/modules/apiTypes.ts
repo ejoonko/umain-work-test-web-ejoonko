@@ -1,9 +1,9 @@
 import { Filter, Restaurant } from "./types";
 
 export interface GetRestaurantsReponse {
-    restaurants: Restaurant[];
+  restaurants: Restaurant[];
 }
 
 export interface GetFiltersReponse {
-    filters: Filter[];
+  filters: Filter[];
 }

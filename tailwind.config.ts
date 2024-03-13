@@ -9,15 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'umain-stroke': 'rgba(0, 0, 0, 0.1)',
-        'umain-off-white': '#FAFAFA',
-        'umain-green': '#00703A',
+        "umain-stroke": "rgba(0, 0, 0, 0.1)",
+        "umain-off-white": "#FAFAFA",
+        "umain-green": "#00703A",
       },
       fontSize: {
-        '40px': '40px',
+        "40px": "40px",
       },
       maxWidth: {
-        'default': '1520px',
+        default: "1520px",
       },
     },
   },
