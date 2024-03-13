@@ -35,3 +35,15 @@ export interface PriceRange {
     id: string,
     range: string,
 }
+
+export interface DeliveryTimeRange {
+    label: string,
+    min: number,
+    max: number,
+}
+
+export interface RestaurantFilters {
+    foodFilters: Filter[],
+    deliveryTime: DeliveryTimeRange[],
+    priceRange: string[]
+}

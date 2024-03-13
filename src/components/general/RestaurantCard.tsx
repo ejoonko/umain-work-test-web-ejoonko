@@ -4,8 +4,8 @@ import Image from "next/image";
 import { FullRoundedButton } from "./FullRoundedButton";
 import { RoundedButton } from "./RoundedButton";
 
-export async function RestaurantCard(restaurant: FullRestaurant) {
-    const baseUrl = process.env.BACKEND_BASE_URL ?? ''
+export function RestaurantCard(restaurant: FullRestaurant) {
+    const baseUrl = process.env.BACKEND_BASE_URL ?? "https://work-test-web-2024-eze6j4scpq-lz.a.run.app"
     return (
         <div className="relative overflow-hidden bg-white w-screen h-screen max-w-xs max-h-52 border border-umain-stroke rounded-lg p-4 flex flex-col justify-between">
             <Image className={`absolute -top-8 -right-4 ${!restaurant.is_open && "opacity-25"}`} width={140} height={140} src={baseUrl + restaurant.image_url} alt={restaurant.name} />
