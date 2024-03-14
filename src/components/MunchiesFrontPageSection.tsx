@@ -13,6 +13,7 @@ import { FilterSideBar } from "./FilterSideBar";
 import Image from "next/image";
 import Logo from "@/icons/munchies-logo.svg";
 import Link from "next/link";
+import { WelcomeModal } from "./WelcomeModal";
 
 interface MunchiesFrontPageSectionProps {
   restaurants: FullRestaurant[];
@@ -38,8 +39,29 @@ export function MunchiesFrontPageSection({
     activePriceRangeFilters,
   );
 
+  const [showModal, setShowModal] = useState(false);
+  const [modalShownOnce, setModalShownOnce] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setShowModal(!modalShownOnce && window.innerWidth < 768);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, [modalShownOnce]);
+
+  function closeModal() {
+    setShowModal(false);
+    setModalShownOnce(true);
+  }
+
   return (
     <div className="flex flex-col max-w-default w-full mx-auto px-6 md:px-8 gap-6 md:gap-12 py-10 md:py-12">
+      {showModal && <WelcomeModal onClose={closeModal} />}
       <Link href={"/"}>
         <Image
           src={Logo as string}
@@ -48,7 +70,7 @@ export function MunchiesFrontPageSection({
           height={40}
         />
       </Link>
-      <div className="flex flex-col gap-6 md:gap-5 md:flex-row">
+      <div className="flex flex-col gap-5 md:flex-row">
         <FilterSideBar
           availableFilters={availableFilters}
           activeFoodFilters={activeFoodFilters}

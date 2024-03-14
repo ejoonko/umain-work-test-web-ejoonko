@@ -118,10 +118,10 @@ export function FilterSideBar({
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-4 block md:hidden">
+      <div className="flex flex-col gap-3 block md:hidden">
         <div className="flex flex-col gap-2">
           <p className="text-[#999999] text-subtitle">{"DELIVERY TIME"}</p>
-          <div className="flex overflow-auto gap-2">
+          <div className="flex overflow-auto gap-2 pb-2">
             {deliveryTimes.map((deliveryTime) => (
               <RoundedButton
                 onClickFunction={() =>
@@ -142,7 +142,7 @@ export function FilterSideBar({
         </div>
         <div className="flex flex-col gap-2">
           <p className="text-[#999999] text-subtitle">{"PRICE RANGE"}</p>
-          <div className="flex overflow-auto gap-2">
+          <div className="flex overflow-auto gap-2 pb-2">
             {priceRanges.map((priceRange) => (
               <RoundedButton
                 onClickFunction={() => handlePriceRangeFilterClick(priceRange)}
