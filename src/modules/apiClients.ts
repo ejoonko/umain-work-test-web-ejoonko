@@ -12,7 +12,8 @@ export async function getRestaurants(): Promise<FullRestaurant[] | undefined> {
       method: "GET",
     });
     const data: GetRestaurantsReponse = await response.json();
-    data.restaurants.forEach(async (restaurant) => {
+
+    for (const restaurant of data.restaurants) {
       const [openStatus, priceRange] = await Promise.all([
         getOpenStatus(restaurant.id),
         getPriceRange(restaurant.price_range_id),
@@ -22,7 +23,12 @@ export async function getRestaurants(): Promise<FullRestaurant[] | undefined> {
         is_open: openStatus?.is_open ?? false,
         range: priceRange?.range ?? "",
       });
+    }
+
+    fullRestaurants.sort(function (x, y) {
+      return x.is_open === y.is_open ? 0 : x.is_open ? -1 : 1;
     });
+
     return fullRestaurants;
   } catch (error) {
     console.error("Could not fetch restaurants" + error);
@@ -35,7 +41,7 @@ export async function getFilters(): Promise<Filter[] | undefined> {
     const data: GetFiltersReponse = await response.json();
     return data.filters;
   } catch (error) {
-    console.error("Could not fetch restaurants" + error);
+    console.error("Could not fetch filters" + error);
   }
 }
 
@@ -65,6 +71,6 @@ async function getPriceRange(
       return data;
     }
   } catch (error) {
-    console.error("Could not find open status for restaurant" + error);
+    console.error("Could not find price range for restaurant" + error);
   }
 }

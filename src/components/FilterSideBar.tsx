@@ -61,7 +61,7 @@ export function FilterSideBar({
   }
 
   return (
-    <div className="flex flex-col w-80 bg-white border border-umain-stroke rounded-xl p-6 gap-8">
+    <div className="flex flex-col w-64 bg-white border border-umain-stroke rounded-xl p-6 gap-8 shrink-0">
       <h1>{"Filter"}</h1>
       <div className="flex flex-col gap-4">
         <p className="text-[#999999] text-subtitle">{"FOOD CATEGORY"}</p>

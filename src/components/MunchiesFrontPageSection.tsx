@@ -28,29 +28,33 @@ export function MunchiesFrontPageSection({
   const [activePriceRangeFilters, setActivePriceRangeFilters] = useState<
     string[]
   >([]);
+  const filteredRestaurants = filterRestaurants(
+    restaurants,
+    activeFoodFilters,
+    activeDeliveryTimeFilters,
+    activePriceRangeFilters,
+  );
 
   return (
-    <>
-      <div className="flex flex-row gap-5">
-        <FilterSideBar
+    <div className="flex flex-row gap-5 max-w-default w-full mx-auto px-8">
+      <FilterSideBar
+        availableFilters={availableFilters}
+        activeFoodFilters={activeFoodFilters}
+        setActiveFoodFilters={setActiveFoodFilters}
+        activeDeliveryTimeFilters={activeDeliveryTimeFilters}
+        setActiveDeliveryTimeFilters={setActiveDeliveryTimeFilters}
+        activePriceRangeFilters={activePriceRangeFilters}
+        setActivePriceRangeFilters={setActivePriceRangeFilters}
+      />
+      <div className="flex flex-col gap-10 overflow-auto">
+        <FoodFiltersSection
           availableFilters={availableFilters}
           activeFoodFilters={activeFoodFilters}
           setActiveFoodFilters={setActiveFoodFilters}
-          activeDeliveryTimeFilters={activeDeliveryTimeFilters}
-          setActiveDeliveryTimeFilters={setActiveDeliveryTimeFilters}
-          activePriceRangeFilters={activePriceRangeFilters}
-          setActivePriceRangeFilters={setActivePriceRangeFilters}
         />
-        <div className="flex flex-col gap-10">
-          <FoodFiltersSection
-            availableFilters={availableFilters}
-            activeFoodFilters={activeFoodFilters}
-            setActiveFoodFilters={setActiveFoodFilters}
-          />
-          <RestaurantListSection restaurants={restaurants} />
-        </div>
+        <RestaurantListSection restaurants={filteredRestaurants} />
       </div>
-    </>
+    </div>
   );
 }
 
@@ -74,6 +78,51 @@ function getAvailableFilters(
       availableFilters.priceRange.push(restaurant.range);
     }
   });
+  availableFilters.priceRange.sort();
 
   return availableFilters;
+}
+
+function filterRestaurants(
+  restaurants: FullRestaurant[],
+  activeFoodFilters: Filter[],
+  activeDeliveryTimeFilters: DeliveryTimeRange[],
+  activePriceRangeFilters: string[],
+) {
+  if (
+    activeFoodFilters.length +
+      activeDeliveryTimeFilters.length +
+      activePriceRangeFilters.length ===
+    0
+  ) {
+    return restaurants;
+  }
+
+  let filteredRestaurants: FullRestaurant[] = restaurants;
+
+  if (activeFoodFilters.length > 0) {
+    filteredRestaurants = restaurants.filter((restaurant) =>
+      restaurant.filter_ids.some((id) =>
+        activeFoodFilters.some((filter) => filter.id === id),
+      ),
+    );
+  }
+
+  if (activeDeliveryTimeFilters.length > 0) {
+    filteredRestaurants = filteredRestaurants.filter((restaurant) =>
+      activeDeliveryTimeFilters.some(
+        (deliveryTimeFilter) =>
+          restaurant.delivery_time_minutes >= deliveryTimeFilter.min &&
+          restaurant.delivery_time_minutes <= deliveryTimeFilter.max,
+      ),
+    );
+  }
+
+  if (activePriceRangeFilters.length > 0) {
+    filteredRestaurants = filteredRestaurants.filter((restaurant) =>
+      activePriceRangeFilters.includes(restaurant.range),
+    );
+  }
+
+  return filteredRestaurants;
 }
