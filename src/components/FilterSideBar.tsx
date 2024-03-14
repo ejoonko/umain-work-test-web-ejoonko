@@ -62,7 +62,7 @@ export function FilterSideBar({
 
   return (
     <>
-      <div className="flex flex-col w-64 bg-white border border-umain-stroke rounded-xl p-6 gap-8 shrink-0 min-h-[855px] max-h-[900px] hidden md:block">
+      <div className="flex flex-col w-64 bg-white border border-umain-stroke rounded-xl p-6 space-y-8 shrink-0 min-h-[855px] max-h-[900px] hidden md:block">
         <h1>{"Filter"}</h1>
         <div className="flex flex-col gap-4">
           <p className="text-[#999999] text-subtitle">{"FOOD CATEGORY"}</p>
@@ -118,8 +118,8 @@ export function FilterSideBar({
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-4 md:gap-8 block md:hidden">
-        <div className="flex flex-col gap-2 md:gap-4">
+      <div className="flex flex-col gap-4 block md:hidden">
+        <div className="flex flex-col gap-2">
           <p className="text-[#999999] text-subtitle">{"DELIVERY TIME"}</p>
           <div className="flex overflow-auto gap-2">
             {deliveryTimes.map((deliveryTime) => (
@@ -133,13 +133,14 @@ export function FilterSideBar({
                   deliveryTime,
                   activeDeliveryTimeFilters,
                 )}
+                background="white"
               >
                 {deliveryTime.label}
               </RoundedButton>
             ))}
           </div>
         </div>
-        <div className="flex flex-col gap-2 md:gap-4">
+        <div className="flex flex-col gap-2">
           <p className="text-[#999999] text-subtitle">{"PRICE RANGE"}</p>
           <div className="flex overflow-auto gap-2">
             {priceRanges.map((priceRange) => (
@@ -151,6 +152,7 @@ export function FilterSideBar({
                   priceRange,
                   activePriceRangeFilters,
                 )}
+                background="white"
               >
                 {priceRange}
               </RoundedButton>
