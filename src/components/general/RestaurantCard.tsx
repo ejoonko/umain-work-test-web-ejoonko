@@ -52,7 +52,7 @@ export function RestaurantCard(restaurant: FullRestaurant) {
         <h3 className="text-h1">{restaurant.name}</h3>
         <button
           disabled={!restaurant.is_open}
-          className="w-8 h-8 bg-umain-green rounded-full self-end shrink-0"
+          className={`w-8 h-8 bg-umain-green rounded-full self-end shrink-0 hover:opacity-60 active:scale-110 transition ${!restaurant.is_open && "pointer-events-none"}`}
         >
           <Image
             className="mx-auto"

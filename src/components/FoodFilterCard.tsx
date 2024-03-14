@@ -41,7 +41,7 @@ export function FoodFilterCard({
   return (
     <button
       onClick={handleClick}
-      className={`relative overflow-hidden flex w-40 h-20 border rounded-lg bg-white py-3 px-3 shrink-0 transition ${isActiveFoodFilter() ? "border-blue-500" : "border-umain-stroke"}`}
+      className={`relative overflow-hidden flex w-40 h-20 border rounded-lg bg-white py-3 px-3 shrink-0 transition hover:opacity-60 ${isActiveFoodFilter() ? "border-blue-500" : "border-umain-stroke"}`}
     >
       <Image
         className={`absolute top-1/2 -translate-y-1/2 right-0`}
