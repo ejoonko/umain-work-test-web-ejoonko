@@ -19,7 +19,7 @@ export function RoundedButton({
   const variantClasses = {
     offwhite: "bg-umain-off-white",
     white: "bg-white",
-    transparent: "bg-transparent",
+    transparent: "",
   };
   return (
     <button

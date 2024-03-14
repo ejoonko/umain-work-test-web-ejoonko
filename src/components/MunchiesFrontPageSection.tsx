@@ -6,7 +6,7 @@ import {
   FullRestaurant,
   RestaurantFilters,
 } from "@/modules/types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RestaurantListSection } from "./RestaurantListSection";
 import { FoodFiltersSection } from "./FoodFiltersSection";
 import { FilterSideBar } from "./FilterSideBar";
@@ -39,11 +39,16 @@ export function MunchiesFrontPageSection({
   );
 
   return (
-    <div className="flex flex-col max-w-default w-full mx-auto px-8 gap-12 pt-12">
+    <div className="flex flex-col max-w-default w-full mx-auto px-6 md:px-8 gap-6 md:gap-12 py-10 md:py-12">
       <Link href={"/"}>
-        <Image src={Logo as string} alt="munchies logo" height={40} />
+        <Image
+          src={Logo as string}
+          alt="munchies logo"
+          className="h-6 md:h-10 w-fit"
+          height={40}
+        />
       </Link>
-      <div className="flex flex-row gap-5">
+      <div className="flex flex-col gap-6 md:gap-5 md:flex-row">
         <FilterSideBar
           availableFilters={availableFilters}
           activeFoodFilters={activeFoodFilters}
@@ -53,7 +58,7 @@ export function MunchiesFrontPageSection({
           activePriceRangeFilters={activePriceRangeFilters}
           setActivePriceRangeFilters={setActivePriceRangeFilters}
         />
-        <div className="flex flex-col gap-10 overflow-auto">
+        <div className="flex flex-col gap-5 md:gap-10 overflow-auto">
           <FoodFiltersSection
             availableFilters={availableFilters}
             activeFoodFilters={activeFoodFilters}
