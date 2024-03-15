@@ -7,10 +7,13 @@ This is the umain test project for creating the frontend of Munchies.
 1: create a copy of .env.local.example named .env.local
 
 2: install dependencies
+
 ```
 yarn
 ```
+
 3: run development
+
 ```
 yarn run dev
 ```
@@ -18,6 +21,7 @@ yarn run dev
 ## Running production build
 
 You can also run a production build with the following commands:
+
 ```
 yarn run build
 yarn run start
@@ -28,6 +32,7 @@ yarn run start
 This projects uses eslint together with prettier with typescript and tailwindCSS plugins for linting and formatting the project.
 
 Run the linting and formatting commands with:
+
 ```
 yarn run lint
 yarn run lint:fix
