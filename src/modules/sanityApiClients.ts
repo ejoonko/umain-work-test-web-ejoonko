@@ -43,7 +43,7 @@ export async function getFrontPageContent(): Promise<
             }
           }`,
     config: {
-      cache: 'no-cache',
+      cache: 'default',
     },
   });
 
