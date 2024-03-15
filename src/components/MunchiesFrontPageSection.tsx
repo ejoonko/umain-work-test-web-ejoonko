@@ -11,20 +11,26 @@ import { RestaurantListSection } from './RestaurantListSection';
 import { FoodFiltersSection } from './FoodFiltersSection';
 import { FilterSideBar } from './FilterSideBar';
 import Image from 'next/image';
-import Logo from '@/icons/munchies-logo.svg';
 import Link from 'next/link';
 import { WelcomeModal } from './WelcomeModal';
+import { FrontPageResponse } from '@/modules/apiTypes';
 
 interface MunchiesFrontPageSectionProps {
   restaurants: FullRestaurant[];
   filters: Filter[];
+  cmsData: FrontPageResponse;
 }
 
 export function MunchiesFrontPageSection({
   restaurants,
   filters,
+  cmsData,
 }: MunchiesFrontPageSectionProps) {
-  const availableFilters = getAvailableFilters(restaurants, filters);
+  const availableFilters = getAvailableFilters(
+    restaurants,
+    filters,
+    cmsData.filterSideBar.deliveryTimeRanges,
+  );
   const [activeFoodFilters, setActiveFoodFilters] = useState<Filter[]>([]);
   const [activeDeliveryTimeFilters, setActiveDeliveryTimeFilters] = useState<
     DeliveryTimeRange[]
@@ -59,15 +65,22 @@ export function MunchiesFrontPageSection({
     setModalShownOnce(true);
   }
 
+  const cmsLogo = cmsData.logo;
+
   return (
     <div className="mx-auto flex w-full max-w-default flex-col gap-6 px-6 py-10 md:gap-12 md:px-8 md:py-12">
-      {showModal && <WelcomeModal onClose={closeModal} />}
-      <Link href={'/'}>
+      {showModal && (
+        <WelcomeModal
+          cmsData={cmsData.mobileWelcomeModal}
+          onClose={closeModal}
+        />
+      )}
+      <Link className="relative h-6 w-[168px] md:h-10 md:w-[280px]" href={'/'}>
         <Image
-          src={Logo as string}
+          src={cmsLogo.asset.url}
           alt="munchies logo"
           className="h-6 w-fit md:h-10"
-          height={40}
+          fill
         />
       </Link>
       <div className="flex flex-col gap-5 md:flex-row">
@@ -79,6 +92,7 @@ export function MunchiesFrontPageSection({
           setActiveDeliveryTimeFilters={setActiveDeliveryTimeFilters}
           activePriceRangeFilters={activePriceRangeFilters}
           setActivePriceRangeFilters={setActivePriceRangeFilters}
+          cmsData={cmsData.filterSideBar}
         />
         <div className="flex flex-col gap-5 overflow-auto md:gap-10">
           <FoodFiltersSection
@@ -86,7 +100,10 @@ export function MunchiesFrontPageSection({
             activeFoodFilters={activeFoodFilters}
             setActiveFoodFilters={setActiveFoodFilters}
           />
-          <RestaurantListSection restaurants={filteredRestaurants} />
+          <RestaurantListSection
+            title={cmsData.restaurantList.restaurantListTitle}
+            restaurants={filteredRestaurants}
+          />
         </div>
       </div>
     </div>
@@ -96,15 +113,11 @@ export function MunchiesFrontPageSection({
 function getAvailableFilters(
   restaurants: FullRestaurant[],
   filters: Filter[],
+  deliveryTimes: DeliveryTimeRange[],
 ): RestaurantFilters {
   const availableFilters: RestaurantFilters = {
     foodFilters: filters,
-    deliveryTime: [
-      { label: '0-10 min', min: 0, max: 10 },
-      { label: '10-30 min', min: 10, max: 30 },
-      { label: '30-60 min', min: 30, max: 60 },
-      { label: '1 hour+', min: 60, max: 1000000 },
-    ],
+    deliveryTime: deliveryTimes,
     priceRange: [],
   };
 
@@ -142,8 +155,8 @@ function filterRestaurants(
       activeDeliveryTimeFilters.length > 0 &&
       activeDeliveryTimeFilters.some(
         (filter) =>
-          restaurant.delivery_time_minutes >= filter.min &&
-          restaurant.delivery_time_minutes <= filter.max,
+          restaurant.delivery_time_minutes >= filter.minValue &&
+          restaurant.delivery_time_minutes <= filter.maxValue,
       );
     const passesPriceRangeFilter =
       activePriceRangeFilters.length > 0 &&

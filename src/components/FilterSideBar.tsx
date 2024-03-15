@@ -6,6 +6,7 @@ import {
   isActiveFoodFilter,
   isActivePriceRangeFilter,
 } from '@/utils/generalUtils';
+import { SanityFilterSideBarData } from '@/modules/apiTypes';
 
 interface FilterSideBarProps {
   availableFilters: RestaurantFilters;
@@ -15,6 +16,7 @@ interface FilterSideBarProps {
   setActiveDeliveryTimeFilters: Dispatch<DeliveryTimeRange[]>;
   activePriceRangeFilters: string[];
   setActivePriceRangeFilters: Dispatch<string[]>;
+  cmsData: SanityFilterSideBarData;
 }
 
 export function FilterSideBar({
@@ -25,6 +27,7 @@ export function FilterSideBar({
   setActiveDeliveryTimeFilters,
   activePriceRangeFilters,
   setActivePriceRangeFilters,
+  cmsData,
 }: FilterSideBarProps) {
   const foodFilters = availableFilters.foodFilters;
   const deliveryTimes = availableFilters.deliveryTime;
@@ -63,9 +66,11 @@ export function FilterSideBar({
   return (
     <>
       <div className="hidden max-h-[900px] min-h-[855px] w-64 shrink-0 flex-col space-y-8 rounded-xl border border-umain-stroke bg-white p-6 md:flex">
-        <h1>{'Filter'}</h1>
+        <h1>{cmsData.filterTitle}</h1>
         <div className="flex flex-col gap-4">
-          <p className="text-subtitle text-[#999999]">{'FOOD CATEGORY'}</p>
+          <p className="text-subtitle text-[#999999]">
+            {cmsData.foodCategoryLabel}
+          </p>
           <div className="flex flex-col gap-2">
             {foodFilters.map((foodFilter) => (
               <RoundedButton
@@ -80,7 +85,9 @@ export function FilterSideBar({
           </div>
         </div>
         <div className="flex flex-col gap-4">
-          <p className="text-subtitle text-[#999999]">{'DELIVERY TIME'}</p>
+          <p className="text-subtitle text-[#999999]">
+            {cmsData.deliveryTimeLabel}
+          </p>
           <div className="flex flex-wrap gap-2">
             {deliveryTimes.map((deliveryTime) => (
               <RoundedButton
@@ -100,7 +107,9 @@ export function FilterSideBar({
           </div>
         </div>
         <div className="flex flex-col gap-4">
-          <p className="text-subtitle text-[#999999]">{'PRICE RANGE'}</p>
+          <p className="text-subtitle text-[#999999]">
+            {cmsData.priceRangeLabel}
+          </p>
           <div className="flex flex-wrap gap-2">
             {priceRanges.map((priceRange) => (
               <RoundedButton

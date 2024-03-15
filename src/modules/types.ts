@@ -38,8 +38,8 @@ export interface PriceRange {
 
 export interface DeliveryTimeRange {
   label: string;
-  min: number;
-  max: number;
+  minValue: number;
+  maxValue: number;
 }
 
 export interface RestaurantFilters {
