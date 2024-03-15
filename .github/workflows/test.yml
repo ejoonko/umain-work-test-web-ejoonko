@@ -1,0 +1,28 @@
+name: 'Build and test'
+on:
+  push:
+    branches: ['main']
+  pull_request:
+
+jobs:
+  build:
+    runs-on: 'ubuntu-22.04'
+    name: 'Build and test'
+    env:
+      NEXT_PUBLIC_BACKEND_BASE_URL: 'https://work-test-web-2024-eze6j4scpq-lz.a.run.app'
+    steps:
+      - name: 'Checkout code'
+        uses: 'actions/checkout@v3'
+      - name: 'Set up Node.js'
+        uses: 'actions/setup-node@v3'
+        with:
+          node-version: '18'
+          cache: 'yarn'
+      - name: 'Install dependencies'
+        run: 'yarn install'
+      - name: 'Lint'
+        run: 'yarn lint'
+      - name: 'Check format'
+        run: 'yarn format:check'
+      - name: 'Build application'
+        run: 'yarn build'
