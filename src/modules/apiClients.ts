@@ -2,7 +2,7 @@ import { GetFiltersReponse, GetRestaurantsReponse } from "./apiTypes";
 import { Filter, FullRestaurant, OpenStatus, PriceRange } from "./types";
 
 const baseUrl =
-  process.env.BACKEND_BASE_URL ??
+  process.env.NEXT_PUBLIC_BACKEND_BASE_URL ??
   "";
 
 export async function getRestaurants(): Promise<FullRestaurant[] | undefined> {

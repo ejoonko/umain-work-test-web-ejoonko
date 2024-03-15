@@ -14,7 +14,7 @@ export function FoodFilterCard({
   setActiveFoodFilters,
 }: FoodFilterCardProps) {
   const baseUrl =
-    process.env.BACKEND_BASE_URL ??
+    process.env.NEXT_PUBLIC_BACKEND_BASE_URL ??
     "";
 
   function isActiveFoodFilter(): boolean {

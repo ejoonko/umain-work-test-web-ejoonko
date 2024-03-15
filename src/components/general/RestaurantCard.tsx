@@ -6,7 +6,7 @@ import { RoundedButton } from "./RoundedButton";
 
 export function RestaurantCard(restaurant: FullRestaurant) {
   const baseUrl =
-    process.env.BACKEND_BASE_URL ??
+    process.env.NEXT_PUBLIC_BACKEND_BASE_URL ??
     "";
   return (
     <div className="relative flex h-screen max-h-52 w-full flex-col justify-between overflow-hidden rounded-lg border border-umain-stroke bg-white p-4 md:max-w-xs">
