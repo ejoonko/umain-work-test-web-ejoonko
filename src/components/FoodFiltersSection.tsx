@@ -1,6 +1,6 @@
-import { Filter, RestaurantFilters } from "@/modules/types";
-import { Dispatch } from "react";
-import { FoodFilterCard } from "./FoodFilterCard";
+import { Filter, RestaurantFilters } from '@/modules/types';
+import { Dispatch } from 'react';
+import { FoodFilterCard } from './FoodFilterCard';
 
 interface FoodFiltersSectionProps {
   availableFilters: RestaurantFilters;

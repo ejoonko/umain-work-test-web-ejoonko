@@ -1,4 +1,4 @@
-import { DeliveryTimeRange, Filter } from "@/modules/types";
+import { DeliveryTimeRange, Filter } from '@/modules/types';
 
 export function isActiveFoodFilter(
   filter: Filter,

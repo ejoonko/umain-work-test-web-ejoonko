@@ -1,17 +1,16 @@
-import { GetFiltersReponse, GetRestaurantsReponse } from "./apiTypes";
-import { Filter, FullRestaurant, OpenStatus, PriceRange } from "./types";
+import { GetFiltersReponse, GetRestaurantsReponse } from './apiTypes';
+import { Filter, FullRestaurant, OpenStatus, PriceRange } from './types';
 
-const baseUrl =
-  process.env.NEXT_PUBLIC_BACKEND_BASE_URL ??
-  "";
+const baseUrl = process.env.NEXT_PUBLIC_BACKEND_BASE_URL ?? '';
 
 export async function getRestaurants(): Promise<FullRestaurant[] | undefined> {
   try {
     const fullRestaurants: FullRestaurant[] = [];
-    const response = await fetch(baseUrl + "/api/restaurants", {
-      method: "GET",
+    const response = await fetch(baseUrl + '/api/restaurants', {
+      method: 'GET',
     });
-    const data: GetRestaurantsReponse = await response.json() as GetRestaurantsReponse;
+    const data: GetRestaurantsReponse =
+      (await response.json()) as GetRestaurantsReponse;
 
     for (const restaurant of data.restaurants) {
       const [openStatus, priceRange] = await Promise.all([
@@ -21,7 +20,7 @@ export async function getRestaurants(): Promise<FullRestaurant[] | undefined> {
       fullRestaurants.push({
         ...restaurant,
         is_open: openStatus?.is_open ?? false,
-        range: priceRange?.range ?? "",
+        range: priceRange?.range ?? '',
       });
     }
 
@@ -37,8 +36,9 @@ export async function getRestaurants(): Promise<FullRestaurant[] | undefined> {
 
 export async function getFilters(): Promise<Filter[] | undefined> {
   try {
-    const response = await fetch(baseUrl + "/api/filter", { method: "GET" });
-    const data: GetFiltersReponse = await response.json() as GetFiltersReponse;
+    const response = await fetch(baseUrl + '/api/filter', { method: 'GET' });
+    const data: GetFiltersReponse =
+      (await response.json()) as GetFiltersReponse;
     return data.filters;
   } catch (error) {
     console.error(error);
@@ -48,10 +48,10 @@ export async function getFilters(): Promise<Filter[] | undefined> {
 async function getOpenStatus(id: string): Promise<OpenStatus | undefined> {
   try {
     const response = await fetch(baseUrl + `/api/open/${id}`, {
-      method: "GET",
+      method: 'GET',
     });
     if (response.status === 200) {
-      const data = await response.json() as OpenStatus;
+      const data = (await response.json()) as OpenStatus;
       return data;
     }
   } catch (error) {
@@ -64,10 +64,10 @@ async function getPriceRange(
 ): Promise<PriceRange | undefined> {
   try {
     const response = await fetch(baseUrl + `/api/price-range/${priceRangeId}`, {
-      method: "GET",
+      method: 'GET',
     });
     if (response.status === 200) {
-      const data = await response.json() as PriceRange;
+      const data = (await response.json()) as PriceRange;
       return data;
     }
   } catch (error) {

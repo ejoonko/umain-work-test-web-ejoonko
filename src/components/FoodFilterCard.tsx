@@ -1,6 +1,6 @@
-import { Filter } from "@/modules/types";
-import { Dispatch } from "react";
-import Image from "next/image";
+import { Filter } from '@/modules/types';
+import { Dispatch } from 'react';
+import Image from 'next/image';
 
 interface FoodFilterCardProps {
   filter: Filter;
@@ -13,9 +13,7 @@ export function FoodFilterCard({
   activeFoodFilters,
   setActiveFoodFilters,
 }: FoodFilterCardProps) {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_BACKEND_BASE_URL ??
-    "";
+  const baseUrl = process.env.NEXT_PUBLIC_BACKEND_BASE_URL ?? '';
 
   function isActiveFoodFilter(): boolean {
     if (
@@ -41,7 +39,7 @@ export function FoodFilterCard({
   return (
     <button
       onClick={handleClick}
-      className={`relative flex h-20 w-40 shrink-0 overflow-hidden rounded-lg border bg-white p-3 transition hover:opacity-60 ${isActiveFoodFilter() ? "border-blue-500" : "border-umain-stroke"}`}
+      className={`relative flex h-20 w-40 shrink-0 overflow-hidden rounded-lg border bg-white p-3 transition hover:opacity-60 ${isActiveFoodFilter() ? 'border-blue-500' : 'border-umain-stroke'}`}
     >
       <Image
         className={`absolute right-0 top-1/2 -translate-y-1/2`}

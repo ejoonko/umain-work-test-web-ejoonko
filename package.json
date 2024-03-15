@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --max-warnings=0",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "format": "prettier -w .",
+    "format:check": "prettier -c ."
   },
   "dependencies": {
     "next": "14.1.3",

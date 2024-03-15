@@ -1,19 +1,19 @@
-"use client";
+'use client';
 
 import {
   DeliveryTimeRange,
   Filter,
   FullRestaurant,
   RestaurantFilters,
-} from "@/modules/types";
-import { useEffect, useState } from "react";
-import { RestaurantListSection } from "./RestaurantListSection";
-import { FoodFiltersSection } from "./FoodFiltersSection";
-import { FilterSideBar } from "./FilterSideBar";
-import Image from "next/image";
-import Logo from "@/icons/munchies-logo.svg";
-import Link from "next/link";
-import { WelcomeModal } from "./WelcomeModal";
+} from '@/modules/types';
+import { useEffect, useState } from 'react';
+import { RestaurantListSection } from './RestaurantListSection';
+import { FoodFiltersSection } from './FoodFiltersSection';
+import { FilterSideBar } from './FilterSideBar';
+import Image from 'next/image';
+import Logo from '@/icons/munchies-logo.svg';
+import Link from 'next/link';
+import { WelcomeModal } from './WelcomeModal';
 
 interface MunchiesFrontPageSectionProps {
   restaurants: FullRestaurant[];
@@ -49,9 +49,9 @@ export function MunchiesFrontPageSection({
 
     handleResize();
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
 
-    return () => window.removeEventListener("resize", handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, [modalShownOnce]);
 
   function closeModal() {
@@ -62,7 +62,7 @@ export function MunchiesFrontPageSection({
   return (
     <div className="mx-auto flex w-full max-w-default flex-col gap-6 px-6 py-10 md:gap-12 md:px-8 md:py-12">
       {showModal && <WelcomeModal onClose={closeModal} />}
-      <Link href={"/"}>
+      <Link href={'/'}>
         <Image
           src={Logo as string}
           alt="munchies logo"
@@ -100,10 +100,10 @@ function getAvailableFilters(
   const availableFilters: RestaurantFilters = {
     foodFilters: filters,
     deliveryTime: [
-      { label: "0-10 min", min: 0, max: 10 },
-      { label: "10-30 min", min: 10, max: 30 },
-      { label: "30-60 min", min: 30, max: 60 },
-      { label: "1 hour+", min: 60, max: 1000000 },
+      { label: '0-10 min', min: 0, max: 10 },
+      { label: '10-30 min', min: 10, max: 30 },
+      { label: '30-60 min', min: 30, max: 60 },
+      { label: '1 hour+', min: 60, max: 1000000 },
     ],
     priceRange: [],
   };

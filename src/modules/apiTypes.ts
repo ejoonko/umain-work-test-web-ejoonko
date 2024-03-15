@@ -1,4 +1,4 @@
-import { Filter, Restaurant } from "./types";
+import { Filter, Restaurant } from './types';
 
 export interface GetRestaurantsReponse {
   restaurants: Restaurant[];

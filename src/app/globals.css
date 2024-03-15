@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 * {
-  font-family: "SF Pro Display", sans-serif;
+  font-family: 'SF Pro Display', sans-serif;
 }
 
 @layer base {

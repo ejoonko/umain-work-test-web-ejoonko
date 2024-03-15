@@ -1,5 +1,5 @@
-import { MunchiesFrontPageSection } from "@/components/MunchiesFrontPageSection";
-import { getFilters, getRestaurants } from "@/modules/apiClients";
+import { MunchiesFrontPageSection } from '@/components/MunchiesFrontPageSection';
+import { getFilters, getRestaurants } from '@/modules/apiClients';
 
 export default async function Home() {
   const [restaurants, filters] = await Promise.all([

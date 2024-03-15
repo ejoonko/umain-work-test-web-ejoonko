@@ -1,6 +1,6 @@
-import React from "react";
-import WhiteLogo from "@/icons/munchies-logo-white.svg";
-import Image from "next/image";
+import React from 'react';
+import WhiteLogo from '@/icons/munchies-logo-white.svg';
+import Image from 'next/image';
 
 interface WelcomeModalProps {
   onClose: () => void;
@@ -18,21 +18,21 @@ export function WelcomeModal({ onClose }: WelcomeModalProps) {
         />
         <div className="flex flex-col gap-4">
           <h1 className="text-5xl font-bold text-white">
-            {"Treat"}
+            {'Treat'}
             <br />
-            {"yourself."}
+            {'yourself.'}
           </h1>
           <p className="text-title text-white">
-            {"Find the best restaurants in your city"}
+            {'Find the best restaurants in your city'}
             <br />
-            {"and get it delivered to your place!"}
+            {'and get it delivered to your place!'}
           </p>
         </div>
         <button
           onClick={onClose}
           className="h-fit w-full rounded-lg border border-white px-6 py-5 text-base font-semibold text-white transition active:bg-white active:text-umain-green"
         >
-          {"Continue"}
+          {'Continue'}
         </button>
       </div>
     </div>
