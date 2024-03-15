@@ -11,7 +11,7 @@ export function FullRoundedButton({
   return (
     <button
       disabled={!clickable}
-      className="border border-umain-stroke px-3 py-2 rounded-full text-body"
+      className="text-body rounded-full border border-umain-stroke px-3 py-2"
     >
       {children}
     </button>

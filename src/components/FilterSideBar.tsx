@@ -1,5 +1,5 @@
 import { DeliveryTimeRange, Filter, RestaurantFilters } from "@/modules/types";
-import { Dispatch, useEffect, useState } from "react";
+import { Dispatch } from "react";
 import { RoundedButton } from "./general/RoundedButton";
 import {
   isActiveDeliveryTimeFilter,
@@ -62,10 +62,10 @@ export function FilterSideBar({
 
   return (
     <>
-      <div className="flex flex-col w-64 bg-white border border-umain-stroke rounded-xl p-6 space-y-8 shrink-0 min-h-[855px] max-h-[900px] hidden md:block">
+      <div className="hidden max-h-[900px] min-h-[855px] w-64 shrink-0 flex-col space-y-8 rounded-xl border border-umain-stroke bg-white p-6 md:flex">
         <h1>{"Filter"}</h1>
         <div className="flex flex-col gap-4">
-          <p className="text-[#999999] text-subtitle">{"FOOD CATEGORY"}</p>
+          <p className="text-subtitle text-[#999999]">{"FOOD CATEGORY"}</p>
           <div className="flex flex-col gap-2">
             {foodFilters.map((foodFilter) => (
               <RoundedButton
@@ -80,7 +80,7 @@ export function FilterSideBar({
           </div>
         </div>
         <div className="flex flex-col gap-4">
-          <p className="text-[#999999] text-subtitle">{"DELIVERY TIME"}</p>
+          <p className="text-subtitle text-[#999999]">{"DELIVERY TIME"}</p>
           <div className="flex flex-wrap gap-2">
             {deliveryTimes.map((deliveryTime) => (
               <RoundedButton
@@ -100,7 +100,7 @@ export function FilterSideBar({
           </div>
         </div>
         <div className="flex flex-col gap-4">
-          <p className="text-[#999999] text-subtitle">{"PRICE RANGE"}</p>
+          <p className="text-subtitle text-[#999999]">{"PRICE RANGE"}</p>
           <div className="flex flex-wrap gap-2">
             {priceRanges.map((priceRange) => (
               <RoundedButton
@@ -118,10 +118,10 @@ export function FilterSideBar({
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-3 block md:hidden">
+      <div className="flex flex-col gap-3 md:hidden">
         <div className="flex flex-col gap-2">
-          <p className="text-[#999999] text-subtitle">{"DELIVERY TIME"}</p>
-          <div className="flex overflow-auto gap-2 pb-2">
+          <p className="text-subtitle text-[#999999]">{"DELIVERY TIME"}</p>
+          <div className="flex gap-2 overflow-auto pb-2">
             {deliveryTimes.map((deliveryTime) => (
               <RoundedButton
                 onClickFunction={() =>
@@ -141,8 +141,8 @@ export function FilterSideBar({
           </div>
         </div>
         <div className="flex flex-col gap-2">
-          <p className="text-[#999999] text-subtitle">{"PRICE RANGE"}</p>
-          <div className="flex overflow-auto gap-2 pb-2">
+          <p className="text-subtitle text-[#999999]">{"PRICE RANGE"}</p>
+          <div className="flex gap-2 overflow-auto pb-2">
             {priceRanges.map((priceRange) => (
               <RoundedButton
                 onClickFunction={() => handlePriceRangeFilterClick(priceRange)}

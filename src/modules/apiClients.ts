@@ -3,7 +3,7 @@ import { Filter, FullRestaurant, OpenStatus, PriceRange } from "./types";
 
 const baseUrl =
   process.env.BACKEND_BASE_URL ??
-  "https://work-test-web-2024-eze6j4scpq-lz.a.run.app";
+  "";
 
 export async function getRestaurants(): Promise<FullRestaurant[] | undefined> {
   try {
@@ -11,7 +11,7 @@ export async function getRestaurants(): Promise<FullRestaurant[] | undefined> {
     const response = await fetch(baseUrl + "/api/restaurants", {
       method: "GET",
     });
-    const data: GetRestaurantsReponse = await response.json();
+    const data: GetRestaurantsReponse = await response.json() as GetRestaurantsReponse;
 
     for (const restaurant of data.restaurants) {
       const [openStatus, priceRange] = await Promise.all([
@@ -31,17 +31,17 @@ export async function getRestaurants(): Promise<FullRestaurant[] | undefined> {
 
     return fullRestaurants;
   } catch (error) {
-    console.error("Could not fetch restaurants" + error);
+    console.error(error);
   }
 }
 
 export async function getFilters(): Promise<Filter[] | undefined> {
   try {
     const response = await fetch(baseUrl + "/api/filter", { method: "GET" });
-    const data: GetFiltersReponse = await response.json();
+    const data: GetFiltersReponse = await response.json() as GetFiltersReponse;
     return data.filters;
   } catch (error) {
-    console.error("Could not fetch filters" + error);
+    console.error(error);
   }
 }
 
@@ -51,11 +51,11 @@ async function getOpenStatus(id: string): Promise<OpenStatus | undefined> {
       method: "GET",
     });
     if (response.status === 200) {
-      const data = await response.json();
+      const data = await response.json() as OpenStatus;
       return data;
     }
   } catch (error) {
-    console.error("Could not find open status for restaurant" + error);
+    console.error(error);
   }
 }
 
@@ -67,10 +67,10 @@ async function getPriceRange(
       method: "GET",
     });
     if (response.status === 200) {
-      const data = await response.json();
+      const data = await response.json() as PriceRange;
       return data;
     }
   } catch (error) {
-    console.error("Could not find price range for restaurant" + error);
+    console.error(error);
   }
 }

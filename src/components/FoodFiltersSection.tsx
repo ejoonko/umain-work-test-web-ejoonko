@@ -14,7 +14,7 @@ export function FoodFiltersSection({
   setActiveFoodFilters,
 }: FoodFiltersSectionProps) {
   return (
-    <div className="flex overflow-x-scroll overflow-x-clip gap-2 pb-2">
+    <div className="flex gap-2 overflow-x-scroll pb-2">
       {availableFilters.foodFilters.map((foodFilter) => (
         <FoodFilterCard
           key={foodFilter.id}

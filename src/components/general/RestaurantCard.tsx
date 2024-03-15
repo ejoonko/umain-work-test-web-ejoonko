@@ -7,11 +7,11 @@ import { RoundedButton } from "./RoundedButton";
 export function RestaurantCard(restaurant: FullRestaurant) {
   const baseUrl =
     process.env.BACKEND_BASE_URL ??
-    "https://work-test-web-2024-eze6j4scpq-lz.a.run.app";
+    "";
   return (
-    <div className="relative overflow-hidden bg-white w-full h-screen md:max-w-xs max-h-52 border border-umain-stroke rounded-lg p-4 flex flex-col justify-between">
+    <div className="relative flex h-screen max-h-52 w-full flex-col justify-between overflow-hidden rounded-lg border border-umain-stroke bg-white p-4 md:max-w-xs">
       <Image
-        className={`absolute -top-8 -right-4 ${!restaurant.is_open && "opacity-25"}`}
+        className={`absolute -right-4 -top-8 ${!restaurant.is_open && "opacity-25"}`}
         width={140}
         height={140}
         src={baseUrl + restaurant.image_url}
@@ -28,14 +28,14 @@ export function RestaurantCard(restaurant: FullRestaurant) {
         {restaurant.is_open ? (
           <FullRoundedButton clickable={false}>
             <div className="flex items-center gap-1">
-              <div className="bg-umain-green rounded-full h-2 w-2" />
+              <div className="size-2 rounded-full bg-umain-green" />
               <p>Open</p>
             </div>
           </FullRoundedButton>
         ) : (
           <FullRoundedButton clickable={false}>
             <div className="flex items-center gap-1">
-              <div className="bg-black rounded-full h-2 w-2" />
+              <div className="size-2 rounded-full bg-black" />
               <p>Closed</p>
             </div>
           </FullRoundedButton>
@@ -52,7 +52,7 @@ export function RestaurantCard(restaurant: FullRestaurant) {
         <h3 className="text-h1">{restaurant.name}</h3>
         <button
           disabled={!restaurant.is_open}
-          className={`w-8 h-8 bg-umain-green rounded-full self-end shrink-0 hover:opacity-60 active:scale-110 transition ${!restaurant.is_open && "pointer-events-none"}`}
+          className={`size-8 shrink-0 self-end rounded-full bg-umain-green transition hover:opacity-60 active:scale-110 ${!restaurant.is_open && "pointer-events-none"}`}
         >
           <Image
             className="mx-auto"

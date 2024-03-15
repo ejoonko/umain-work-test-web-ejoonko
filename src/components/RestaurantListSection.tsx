@@ -8,7 +8,7 @@ interface RestaurantListSection {
 export function RestaurantListSection({ restaurants }: RestaurantListSection) {
   return (
     <div>
-      <h1 className="text-xl pb-5 md:pb-10 md:text-display">
+      <h1 className="md:text-display pb-5 text-xl md:pb-10">
         {"Restaurant’s"}
       </h1>
       <div className="flex flex-wrap gap-4">

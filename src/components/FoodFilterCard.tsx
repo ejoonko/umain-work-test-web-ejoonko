@@ -15,7 +15,7 @@ export function FoodFilterCard({
 }: FoodFilterCardProps) {
   const baseUrl =
     process.env.BACKEND_BASE_URL ??
-    "https://work-test-web-2024-eze6j4scpq-lz.a.run.app";
+    "";
 
   function isActiveFoodFilter(): boolean {
     if (
@@ -41,10 +41,10 @@ export function FoodFilterCard({
   return (
     <button
       onClick={handleClick}
-      className={`relative overflow-hidden flex w-40 h-20 border rounded-lg bg-white py-3 px-3 shrink-0 transition hover:opacity-60 ${isActiveFoodFilter() ? "border-blue-500" : "border-umain-stroke"}`}
+      className={`relative flex h-20 w-40 shrink-0 overflow-hidden rounded-lg border bg-white p-3 transition hover:opacity-60 ${isActiveFoodFilter() ? "border-blue-500" : "border-umain-stroke"}`}
     >
       <Image
-        className={`absolute top-1/2 -translate-y-1/2 right-0`}
+        className={`absolute right-0 top-1/2 -translate-y-1/2`}
         width={80}
         height={80}
         src={baseUrl + filter.image_url}

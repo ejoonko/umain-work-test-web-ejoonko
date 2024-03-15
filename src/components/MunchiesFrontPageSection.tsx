@@ -60,13 +60,13 @@ export function MunchiesFrontPageSection({
   }
 
   return (
-    <div className="flex flex-col max-w-default w-full mx-auto px-6 md:px-8 gap-6 md:gap-12 py-10 md:py-12">
+    <div className="mx-auto flex w-full max-w-default flex-col gap-6 px-6 py-10 md:gap-12 md:px-8 md:py-12">
       {showModal && <WelcomeModal onClose={closeModal} />}
       <Link href={"/"}>
         <Image
           src={Logo as string}
           alt="munchies logo"
-          className="h-6 md:h-10 w-fit"
+          className="h-6 w-fit md:h-10"
           height={40}
         />
       </Link>
@@ -80,7 +80,7 @@ export function MunchiesFrontPageSection({
           activePriceRangeFilters={activePriceRangeFilters}
           setActivePriceRangeFilters={setActivePriceRangeFilters}
         />
-        <div className="flex flex-col gap-5 md:gap-10 overflow-auto">
+        <div className="flex flex-col gap-5 overflow-auto md:gap-10">
           <FoodFiltersSection
             availableFilters={availableFilters}
             activeFoodFilters={activeFoodFilters}
