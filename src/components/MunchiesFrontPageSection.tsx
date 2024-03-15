@@ -75,7 +75,7 @@ export function MunchiesFrontPageSection({
           onClose={closeModal}
         />
       )}
-      <Link className="relative h-6 w-[168px] md:h-10 md:w-[280px]" href={'/'}>
+      <Link className="relative h-6 w-[168px] md:h-10 md:w-[280px]" href={''}>
         <Image
           src={cmsLogo.asset.url}
           alt="munchies logo"

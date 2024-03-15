@@ -3,6 +3,7 @@
 This is the umain test project for creating the frontend of Munchies.
 
 ## Sanity CMS
+
 This project uses Sanity as its headless CMS service, and https://github.com/ejoonko/umain-work-test-sanity-ejoonko is where you can find the codebase for the deployed sanity platform.
 One will require a proper sanity project ID as a environment variable to run locally, and this can be provided privately by the author of this repository.
 
