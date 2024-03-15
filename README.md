@@ -11,7 +11,9 @@ One will require a proper sanity project ID as a environment variable to run loc
 
 1: create a copy of .env.local.example named .env.local
 
-2: install dependencies
+2: fill in the environment variables.
+
+3: install dependencies
 
 ```
 yarn
