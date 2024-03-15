@@ -71,7 +71,7 @@ export function FilterSideBar({
               <RoundedButton
                 onClickFunction={() => handleFoodFlitersClick(foodFilter)}
                 key={foodFilter.id}
-                additionalClasses="rounded-lg hover:border-blue-500 active:scale-105"
+                additionalClasses="rounded-lg w-min hover:border-blue-500 active:scale-105"
                 active={isActiveFoodFilter(foodFilter, activeFoodFilters)}
               >
                 {foodFilter.name}

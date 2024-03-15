@@ -25,7 +25,7 @@ export function RoundedButton({
     <button
       onClick={onClickFunction}
       disabled={!clickable}
-      className={`text-body w-min text-nowrap rounded border px-2.5 py-2 transition ${additionalClasses} ${active ? 'border-blue-500 bg-blue-500 text-white' : `border-umain-stroke ${variantClasses[background]}`}`}
+      className={`text-body text-nowrap rounded border px-2.5 py-2 transition ${additionalClasses} ${active ? 'border-blue-500 bg-blue-500 text-white' : `border-umain-stroke ${variantClasses[background]}`}`}
     >
       {children}
     </button>
