@@ -10,6 +10,7 @@ jobs:
     name: 'Build and test'
     env:
       NEXT_PUBLIC_BACKEND_BASE_URL: 'https://work-test-web-2024-eze6j4scpq-lz.a.run.app'
+      NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ vars.NEXT_PUBLIC_SANITY_PROJECT_ID }}
     steps:
       - name: 'Checkout code'
         uses: 'actions/checkout@v3'
